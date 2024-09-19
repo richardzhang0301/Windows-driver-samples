@@ -21,15 +21,15 @@ Abstract:
 //=============================================================================
 
 
-#define SPDIF_DEVICE_MAX_CHANNELS                 2       // Max Channels.
+#define SPDIF_DEVICE_MAX_CHANNELS                 8       // Max Channels.
 
-#define SPDIF_HOST_MAX_CHANNELS                   2       // Max Channels.
+#define SPDIF_HOST_MAX_CHANNELS                   8       // Max Channels.
 #define SPDIF_HOST_MIN_BITS_PER_SAMPLE            16      // Min Bits Per Sample
 #define SPDIF_HOST_MAX_BITS_PER_SAMPLE            16      // Max Bits Per Sample
 #define SPDIF_HOST_MIN_SAMPLE_RATE                44100   // Min Sample Rate
 #define SPDIF_HOST_MAX_SAMPLE_RATE                96000   // Max Sample Rate
 
-#define SPDIF_OFFLOAD_MAX_CHANNELS                2       // Max Channels.
+#define SPDIF_OFFLOAD_MAX_CHANNELS                8       // Max Channels.
 #define SPDIF_OFFLOAD_MIN_BITS_PER_SAMPLE         16      // Min Bits Per Sample
 #define SPDIF_OFFLOAD_MAX_BITS_PER_SAMPLE         16      // Max Bits Per Sample
 #define SPDIF_OFFLOAD_MIN_SAMPLE_RATE             44100   // Min Sample Rate
@@ -41,7 +41,7 @@ Abstract:
 #define SPDIF_LOOPBACK_MIN_SAMPLE_RATE            SPDIF_HOST_MIN_SAMPLE_RATE       // Must be equal to host pin's Min Sample Rate
 #define SPDIF_LOOPBACK_MAX_SAMPLE_RATE            SPDIF_HOST_MAX_SAMPLE_RATE       // Must be equal to host pin's Max Sample Rate
 
-#define SPDIF_DOLBY_DIGITAL_MAX_CHANNELS          2       // Max Channels.
+#define SPDIF_DOLBY_DIGITAL_MAX_CHANNELS          8       // Max Channels.
 #define SPDIF_DOLBY_DIGITAL_MIN_BITS_PER_SAMPLE   16      // Min Bits Per Sample
 #define SPDIF_DOLBY_DIGITAL_MAX_BITS_PER_SAMPLE   16      // Max Bits Per Sample
 #define SPDIF_DOLBY_DIGITAL_MIN_SAMPLE_RATE       44100   // Min Sample Rate
@@ -50,7 +50,7 @@ Abstract:
 //
 // Max # of pin instances.
 //
-#define SPDIF_MAX_INPUT_SYSTEM_STREAMS            2
+#define SPDIF_MAX_INPUT_SYSTEM_STREAMS            8
 #define SPDIF_MAX_INPUT_OFFLOAD_STREAMS           MAX_INPUT_OFFLOAD_STREAMS
 #define SPDIF_MAX_OUTPUT_LOOPBACK_STREAMS         MAX_OUTPUT_LOOPBACK_STREAMS
 
@@ -81,6 +81,31 @@ KSDATAFORMAT_WAVEFORMATEXTENSIBLE SpdifAudioEngineSupportedDeviceFormats[] =
             },
             16,
             KSAUDIO_SPEAKER_STEREO,
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM)
+        }
+    },
+    { // 8ch
+        {
+            sizeof(KSDATAFORMAT_WAVEFORMATEXTENSIBLE),
+            0,
+            0,
+            0,
+            STATICGUIDOF(KSDATAFORMAT_TYPE_AUDIO),
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM),
+            STATICGUIDOF(KSDATAFORMAT_SPECIFIER_WAVEFORMATEX)
+        },
+        {
+            {
+                WAVE_FORMAT_EXTENSIBLE,
+                8,
+                48000,
+                768000,
+                16,
+                16,
+                sizeof(WAVEFORMATEXTENSIBLE) - sizeof(WAVEFORMATEX)
+            },
+            16,
+            KSAUDIO_SPEAKER_7POINT1,
             STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM)
         }
     },
@@ -186,6 +211,31 @@ KSDATAFORMAT_WAVEFORMATEXTENSIBLE SpdifHostPinSupportedDeviceFormats[] =
             },
             16,
             KSAUDIO_SPEAKER_STEREO,
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM)
+        }
+    },
+    { // 8ch
+        {
+            sizeof(KSDATAFORMAT_WAVEFORMATEXTENSIBLE),
+            0,
+            0,
+            0,
+            STATICGUIDOF(KSDATAFORMAT_TYPE_AUDIO),
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM),
+            STATICGUIDOF(KSDATAFORMAT_SPECIFIER_WAVEFORMATEX)
+        },
+        {
+            {
+                WAVE_FORMAT_EXTENSIBLE,
+                8,
+                48000,
+                768000,
+                16,
+                16,
+                sizeof(WAVEFORMATEXTENSIBLE) - sizeof(WAVEFORMATEX)
+            },
+            16,
+            KSAUDIO_SPEAKER_7POINT1,
             STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM)
         }
     },
@@ -341,6 +391,31 @@ KSDATAFORMAT_WAVEFORMATEXTENSIBLE SpdifOffloadPinSupportedDeviceFormats[] =
             },
             16,
             KSAUDIO_SPEAKER_STEREO,
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM)
+        }
+    },
+    { // 8ch
+        {
+            sizeof(KSDATAFORMAT_WAVEFORMATEXTENSIBLE),
+            0,
+            0,
+            0,
+            STATICGUIDOF(KSDATAFORMAT_TYPE_AUDIO),
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM),
+            STATICGUIDOF(KSDATAFORMAT_SPECIFIER_WAVEFORMATEX)
+        },
+        {
+            {
+                WAVE_FORMAT_EXTENSIBLE,
+                8,
+                48000,
+                768000,
+                16,
+                16,
+                sizeof(WAVEFORMATEXTENSIBLE) - sizeof(WAVEFORMATEX)
+            },
+            16,
+            KSAUDIO_SPEAKER_7POINT1,
             STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM)
         }
     },

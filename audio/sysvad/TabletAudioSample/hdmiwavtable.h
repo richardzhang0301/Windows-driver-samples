@@ -24,9 +24,9 @@ Abstract:
 //=============================================================================
 
 
-#define HDMI_DEVICE_MAX_CHANNELS                 2       // Max Channels.
+#define HDMI_DEVICE_MAX_CHANNELS                 8       // Max Channels.
 
-#define HDMI_HOST_MAX_CHANNELS                   2       // Max Channels.
+#define HDMI_HOST_MAX_CHANNELS                   8       // Max Channels.
 #define HDMI_HOST_MIN_BITS_PER_SAMPLE            16      // Min Bits Per Sample
 #define HDMI_HOST_MAX_BITS_PER_SAMPLE            16      // Max Bits Per Sample
 #define HDMI_HOST_MIN_SAMPLE_RATE                44100   // Min Sample Rate
@@ -38,7 +38,7 @@ Abstract:
 #define HDMI_LOOPBACK_MIN_SAMPLE_RATE            HDMI_HOST_MIN_SAMPLE_RATE       // Must be equal to host pin's Min Sample Rate
 #define HDMI_LOOPBACK_MAX_SAMPLE_RATE            HDMI_HOST_MAX_SAMPLE_RATE       // Must be equal to host pin's Max Sample Rate
 
-#define HDMI_DOLBY_DIGITAL_MAX_CHANNELS          2       // Max Channels.
+#define HDMI_DOLBY_DIGITAL_MAX_CHANNELS          8       // Max Channels.
 #define HDMI_DOLBY_DIGITAL_MIN_BITS_PER_SAMPLE   16      // Min Bits Per Sample
 #define HDMI_DOLBY_DIGITAL_MAX_BITS_PER_SAMPLE   16      // Max Bits Per Sample
 #define HDMI_DOLBY_DIGITAL_MIN_SAMPLE_RATE       44100   // Min Sample Rate
@@ -50,7 +50,7 @@ Abstract:
 #define HDMI_DOLBY_MAT_MIN_SAMPLE_RATE           192000  // Min Sample Rate
 #define HDMI_DOLBY_MAT_MAX_SAMPLE_RATE           192000  // Max Sample Rate
 
-#define HDMI_DTS_MAX_CHANNELS                    2       // Max Channels.
+#define HDMI_DTS_MAX_CHANNELS                    8       // Max Channels.
 #define HDMI_DTS_MIN_BITS_PER_SAMPLE             16      // Min Bits Per Sample
 #define HDMI_DTS_MAX_BITS_PER_SAMPLE             16      // Max Bits Per Sample
 #define HDMI_DTS_MIN_SAMPLE_RATE                 48000   // Min Sample Rate
@@ -95,6 +95,31 @@ KSDATAFORMAT_WAVEFORMATEXTENSIBLE HdmiHostPinSupportedDeviceFormats[] =
             },
             16,
             KSAUDIO_SPEAKER_STEREO,
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM)
+        }
+    },
+    { // 8ch
+        {
+            sizeof(KSDATAFORMAT_WAVEFORMATEXTENSIBLE),
+            0,
+            0,
+            0,
+            STATICGUIDOF(KSDATAFORMAT_TYPE_AUDIO),
+            STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM),
+            STATICGUIDOF(KSDATAFORMAT_SPECIFIER_WAVEFORMATEX)
+        },
+        {
+            {
+                WAVE_FORMAT_EXTENSIBLE,
+                8,
+                48000,
+                768000,
+                16,
+                16,
+                sizeof(WAVEFORMATEXTENSIBLE) - sizeof(WAVEFORMATEX)
+            },
+            16,
+            KSAUDIO_SPEAKER_7POINT1,
             STATICGUIDOF(KSDATAFORMAT_SUBTYPE_PCM)
         }
     },
